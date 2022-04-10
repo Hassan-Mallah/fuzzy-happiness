@@ -1,6 +1,17 @@
 import pandas as pd
 
-print('version:', pd.__version__, ']n')
+
+def pd_version():
+    print('version:', pd.__version__, ']n')
+
+
+def print_df(df):
+    print('this is a data frame:\n', df)
+
+
+def print_series(df, name):
+    print(df[name])
+
 
 df = pd.DataFrame(
     {
@@ -14,4 +25,4 @@ df = pd.DataFrame(
     }
 )
 
-print('this is a data frame:\n', df)
+print_series(df, "Age")
