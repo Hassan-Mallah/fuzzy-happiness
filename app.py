@@ -10,8 +10,8 @@ def print_df(df):
     print('this is a data frame:\n', df)
 
 
-def print_series(df, name):
-    print(df[name])
+def get_series(df, name):
+    return df[name]
 
 
 df = pd.DataFrame(
@@ -26,4 +26,6 @@ df = pd.DataFrame(
     }
 )
 
-print_series(df, "Age")
+s = get_series(df, "Age")
+
+print(s.max())
