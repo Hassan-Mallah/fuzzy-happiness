@@ -29,3 +29,5 @@ df = pd.DataFrame(
 s = get_series(df, "Age")
 
 print(s.max())
+
+print(df.describe())
