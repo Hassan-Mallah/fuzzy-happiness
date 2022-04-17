@@ -1,9 +1,8 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 
 
 def pd_version():
-    print('version:', pd.__version__, ']n')
+    print('version:', pd.__version__, '\n')
 
 
 def print_df(df):
@@ -30,4 +29,5 @@ s = get_series(df, "Age")
 
 print(s.max())
 
+# I’m interested in some basic statistics of the numerical data of my data table
 print(df.describe())
