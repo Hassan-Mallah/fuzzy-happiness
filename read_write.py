@@ -5,11 +5,14 @@ def pd_version():
     print('version:', pd.__version__, '\n')
 
 
-def print_titanic(titanic):
-    print(titanic)
+def print_titanic(df):
+    print(df)
+
+
+def get_top_rows(df, n):
+    print(df.head(n))
 
 
 titanic = pd.read_csv("data/titanic.csv")
 
-# [891 rows x 12 columns]
-print_titanic(titanic)
+get_top_rows(titanic, 1)
