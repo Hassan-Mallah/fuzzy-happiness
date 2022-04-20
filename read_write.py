@@ -1,17 +1,23 @@
 import pandas as pd
+from pandas import DataFrame
 
 
 def pd_version():
     print('version:', pd.__version__, '\n')
 
 
-def print_titanic(df):
+def print_titanic(df: DataFrame):
     print(df)
 
 
 # n amount of top rows
-def get_top_rows(df, n):
+def get_top_rows(df: DataFrame, n):
     print(df.head(n))
+
+
+# n amount of top rows
+def get_last_rows(df: DataFrame, n):
+    print(df.tail(n))
 
 
 def save_to_excel(df, file_name, sheet_name):
@@ -20,4 +26,4 @@ def save_to_excel(df, file_name, sheet_name):
 
 titanic = pd.read_csv("data/titanic.csv")
 
-save_to_excel(titanic, 'titanic.xlsx', 'passengers')
+get_last_rows(titanic, 5)
