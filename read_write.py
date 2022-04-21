@@ -6,7 +6,12 @@ def pd_version():
     print('version:', pd.__version__, '\n')
 
 
-def print_titanic(df: DataFrame):
+# get data from csv file
+def from_csv(file_name) -> DataFrame:
+    return pd.read_csv(file_name)
+
+
+def print_dataframe(df: DataFrame):
     print(df)
 
 
@@ -24,6 +29,10 @@ def save_to_excel(df, file_name, sheet_name):
     df.to_excel(file_name, sheet_name=sheet_name, index=False)
 
 
-titanic = pd.read_csv("data/titanic.csv")
+# get DataFrame from excel file
+def from_excel(file_name, sheet_name) -> DataFrame:
+    return pd.read_excel(file_name, sheet_name)
 
-get_last_rows(titanic, 5)
+
+titanic = from_excel("titanic.xlsx", sheet_name="passengers")
+print(titanic)
