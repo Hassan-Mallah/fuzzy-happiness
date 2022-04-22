@@ -34,5 +34,11 @@ def from_excel(file_name, sheet_name) -> DataFrame:
     return pd.read_excel(file_name, sheet_name)
 
 
+# get DataFrame info
+def get_info(df):
+    df.info()
+
+
 titanic = from_excel("titanic.xlsx", sheet_name="passengers")
-print(titanic)
+
+get_info(titanic)
