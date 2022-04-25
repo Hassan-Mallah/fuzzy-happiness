@@ -1,5 +1,5 @@
 import pandas as pd
-from pandas import Series
+from pandas import Series, DataFrame
 
 
 def print_head(series: Series):
@@ -11,9 +11,13 @@ def print_shape(series: Series):
     print(ages.shape)
 
 
+def get_series(df: DataFrame, name):
+    return df[name]
+
+
 titanic = pd.read_csv("data/titanic.csv")
 
 # I’m interested in the age of the Titanic passengers.
-ages = titanic["Age"]
+ages = get_series(titanic, 'Age')
 
 print_shape(ages)
