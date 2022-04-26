@@ -11,13 +11,18 @@ def print_shape(series: Series):
     print(ages.shape)
 
 
+# I’m interested in the age of the Titanic passengers.
 def get_series(df: DataFrame, name):
     return df[name]
 
 
+# I’m interested in the age and sex of the Titanic passengers.
+def get_subset(df: DataFrame, *args):
+    columns = list(args)
+    return df[columns]
+
+
 titanic = pd.read_csv("data/titanic.csv")
 
-# I’m interested in the age of the Titanic passengers.
-ages = get_series(titanic, 'Age')
-
-print_shape(ages)
+subset = get_subset(titanic, 'Age', 'Sex')
+print_head(subset)
