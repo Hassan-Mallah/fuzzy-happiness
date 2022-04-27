@@ -8,7 +8,7 @@ def print_head(series: Series):
 
 #  A pandas Series is 1-dimensional and only the number of rows is returned.
 def print_shape(series: Series):
-    print(ages.shape)
+    print(series.shape)
 
 
 # I’m interested in the age of the Titanic passengers.
@@ -17,12 +17,18 @@ def get_series(df: DataFrame, name):
 
 
 # I’m interested in the age and sex of the Titanic passengers.
+# e.g. get_subset(titanic, 'Age', 'Sex')
 def get_subset(df: DataFrame, *args):
     columns = list(args)
     return df[columns]
 
 
+def get_columns(df: DataFrame):
+    print(df.columns)
+
+
 titanic = pd.read_csv("data/titanic.csv")
 
 subset = get_subset(titanic, 'Age', 'Sex')
-print_head(subset)
+
+get_columns(subset)
