@@ -1,3 +1,4 @@
+import operator  # used for operator >, ==, !=, <, <=, ...
 import pandas as pd
 from pandas import Series, DataFrame
 
@@ -27,8 +28,14 @@ def get_columns(df: DataFrame):
     print(df.columns)
 
 
+# operator.gt is greater
+def check_condition(series: Series, operation, value):
+    print(operation(series, value))
+
+
 titanic = pd.read_csv("data/titanic.csv")
 
 subset = get_subset(titanic, 'Age', 'Sex')
 
-get_columns(subset)
+check_condition(subset['Age'], operator.gt, 10)
+
