@@ -29,13 +29,17 @@ def get_columns(df: DataFrame):
 
 
 # operator.gt is greater
-def check_condition(series: Series, operation, value):
-    print(operation(series, value))
+# e.g. check_condition(subset['Age'], operator.gt, 10)
+def check_condition(series: Series, operation, value) -> Series:
+    return operation(series, value)
 
+def filter_with_series(df: DataFrame, series: Series):
+    print(df[series])
 
 titanic = pd.read_csv("data/titanic.csv")
 
 subset = get_subset(titanic, 'Age', 'Sex')
 
-check_condition(subset['Age'], operator.gt, 10)
 
+above_35 = check_condition(titanic['Age'], operator.gt, 35)
+filter_with_series(titanic, above_35)
