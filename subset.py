@@ -33,13 +33,18 @@ def get_columns(df: DataFrame):
 def check_condition(series: Series, operation, value) -> Series:
     return operation(series, value)
 
+
+# filter_with_series(titanic, above_35)
 def filter_with_series(df: DataFrame, series: Series):
     print(df[series])
 
+
+# using isin(), to check whether elements in Series are contained in `values`
+def filter_series_data(df: DataFrame, name, values: list):
+    return df[df[name].isin(values)]
+
+
 titanic = pd.read_csv("data/titanic.csv")
 
-subset = get_subset(titanic, 'Age', 'Sex')
-
-
-above_35 = check_condition(titanic['Age'], operator.gt, 35)
-filter_with_series(titanic, above_35)
+class_23 = filter_series_data(titanic, "Pclass", [2, 3])
+print([class_23])
