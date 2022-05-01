@@ -44,7 +44,13 @@ def filter_series_data(df: DataFrame, name, values: list):
     return df[df[name].isin(values)]
 
 
+# return not null data for a series
+def get_not_null(df: DataFrame, name):
+    return df[df[name].notna()]
+
+
 titanic = pd.read_csv("data/titanic.csv")
 
-class_23 = filter_series_data(titanic, "Pclass", [2, 3])
-print([class_23])
+age_no_na = get_not_null(titanic, 'Age')
+
+print(age_no_na)
