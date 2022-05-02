@@ -41,6 +41,12 @@ def filter_with_series(df: DataFrame, series: Series):
 
 # using isin(), to check whether elements in Series are contained in `values`
 def filter_series_data(df: DataFrame, name, values: list):
+    """
+    It is equivalent to filtering by rows for which the class is either 2 or 3 and combining the two statements with an | (or) operator:
+    class_23 = titanic[(titanic["Pclass"] == 2) | (titanic["Pclass"] == 3)]
+    When combining multiple conditional statements, each condition must be surrounded by parentheses ().
+    Moreover, you can not use or/and but need to use the or operator | and the and operator &.
+    """
     return df[df[name].isin(values)]
 
 
@@ -53,4 +59,4 @@ titanic = pd.read_csv("data/titanic.csv")
 
 age_no_na = get_not_null(titanic, 'Age')
 
-print(age_no_na)
+print_shape(age_no_na)
