@@ -57,6 +57,10 @@ def get_not_null(df: DataFrame, name):
 
 titanic = pd.read_csv("data/titanic.csv")
 
-age_no_na = get_not_null(titanic, 'Age')
+# I’m interested in the names of the passengers older than 35 years.
 
-print_shape(age_no_na)
+adult_names = titanic.loc[titanic["Age"] > 35, "Name"]
+
+print(adult_names)
+
+
