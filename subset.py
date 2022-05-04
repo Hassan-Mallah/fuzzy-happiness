@@ -34,9 +34,10 @@ def check_condition(series: Series, operation, value) -> Series:
     return operation(series, value)
 
 
+# return only with true values
 # filter_with_series(titanic, above_35)
 def filter_with_series(df: DataFrame, series: Series):
-    print(df[series])
+    return df[series]
 
 
 # using isin(), to check whether elements in Series are contained in `values`
@@ -58,9 +59,11 @@ def get_not_null(df: DataFrame, name):
 titanic = pd.read_csv("data/titanic.csv")
 
 # I’m interested in the names of the passengers older than 35 years.
-
 adult_names = titanic.loc[titanic["Age"] > 35, "Name"]
 
-print(adult_names)
+# print(adult_names)
 
+above_35 = check_condition(titanic['Age'], operator.gt, 35)
 
+above_35 = filter_with_series(titanic, above_35)
+print(above_35['Age'])
