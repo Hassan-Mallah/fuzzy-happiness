@@ -56,14 +56,27 @@ def get_not_null(df: DataFrame, name):
     return df[df[name].notna()]
 
 
+# I’m interested in the names of the passengers older than 35 years.
+# adult_names = titanic.loc[titanic["Age"] > 35, "Name"]
+def get_filterd_column(df: DataFrame, data, name):
+    """
+    loc: Access a group of rows and columns by label(s) or a boolean array.
+    In this case, a subset of both rows and columns is made in one go and just using selection brackets [] is not sufficient anymore.
+    The loc/iloc operators are required in front of the selection brackets [].
+    When using loc/iloc, the part before the comma is the rows you want, and the part after the comma is the columns you want to select.
+
+    Similar to:
+    above_35 = check_condition(titanic['Age'], operator.gt, 35)
+    above_35 = filter_with_series(titanic, above_35)
+    print(above_35['Name'])
+    """
+
+    return df.loc[data, name]
+
+
 titanic = pd.read_csv("data/titanic.csv")
 
-# I’m interested in the names of the passengers older than 35 years.
-adult_names = titanic.loc[titanic["Age"] > 35, "Name"]
-
-# print(adult_names)
 
 above_35 = check_condition(titanic['Age'], operator.gt, 35)
+print(get_filterd_column(titanic, above_35, 'Name'))
 
-above_35 = filter_with_series(titanic, above_35)
-print(above_35['Age'])
