@@ -74,9 +74,13 @@ def get_filterd_column(df: DataFrame, data, name):
     return df.loc[data, name]
 
 
+def use_iloc(df: DataFrame):
+    # I’m interested in rows 10 till 25 and columns 3 to 5.
+    # Again, a subset of both rows and columns is made in one go and just using selection brackets [] is not sufficient anymore.
+    # When specifically interested in certain rows and/or columns based on their position in the table, use the iloc operator in front of the selection brackets [].
+    print(df.iloc[9:25, 2:5])
+
+
 titanic = pd.read_csv("data/titanic.csv")
 
-
-above_35 = check_condition(titanic['Age'], operator.gt, 35)
-print(get_filterd_column(titanic, above_35, 'Name'))
-
+use_iloc(titanic)
