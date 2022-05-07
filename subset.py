@@ -81,6 +81,12 @@ def use_iloc(df: DataFrame):
     print(df.iloc[9:25, 2:5])
 
 
-titanic = pd.read_csv("data/titanic.csv")
+def assign_value(df: DataFrame, value):
+    # When selecting specific rows and/or columns with loc or iloc, new values can be assigned to the selected data.
+    # For example, to assign the name anonymous to the first 3 elements of the third column:
+    df.iloc[0:3, 3] = value
+    print(df.head().to_string())
 
-use_iloc(titanic)
+
+titanic = pd.read_csv("data/titanic.csv")
+assign_value(titanic, 'anonymous')
